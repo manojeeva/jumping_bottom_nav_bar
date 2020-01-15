@@ -12,6 +12,8 @@ How to use.
 Wrap your code with Default Tab Controller to animate when you change tab.
 
 Bottom Navigation 
+```
+
  bottomNavigationBar: JumpingTabBar(
           onChangeTab: onChangeTab,
           circleGradient: LinearGradient(
@@ -27,14 +29,21 @@ Bottom Navigation
         ),
       ),
 
+```
 Chaning Icon and Curve colors 
+```
+
    TabItemIcon(
         iconData: Icons.home,
         startColor: Colors.red,
         endColor: Colors.green,
-        curveColor: Colors.yellow)
+        curveColor: Colors.yellow,
+        )
 
+```
 Chaning Circle Color
+```
+
 LinearGradient(
             colors: [
               Colors.purpleAccent,
@@ -42,9 +51,11 @@ LinearGradient(
             ],
             begin: Alignment.bottomLeft,
             end: Alignment.topRight,
-          ),     
-      
+          ),    
+
+```
  ## Full Example.
+```
 
 class BottomBarPage extends StatefulWidget {
   @override
@@ -113,3 +124,5 @@ class _BottomBarPageState extends State<BottomBarPage> {
     );
   }
 }
+
+```
