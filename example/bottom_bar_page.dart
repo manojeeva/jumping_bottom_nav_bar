@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jumping_nav_bar/jumping_nav_bar.dart';
+import 'package:jumping_bottom_nav_bar/jumping_nav_bar.dart';
 
 class BottomBarPage extends StatefulWidget {
   @override

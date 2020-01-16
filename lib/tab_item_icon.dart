@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// It is used to define the tab items
 class TabItemIcon {
   final Color startColor;
   final Color endColor;

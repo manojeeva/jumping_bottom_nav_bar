@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:jumping_nav_bar/curve_painter.dart';
-import 'package:jumping_nav_bar/tab_item.dart';
-import 'package:jumping_nav_bar/tab_item_icon.dart';
+import 'package:jumping_bottom_nav_bar/curve_painter.dart';
+import 'package:jumping_bottom_nav_bar/tab_item.dart';
+import 'package:jumping_bottom_nav_bar/tab_item_icon.dart';
 
+/// Main Widget should be used in bottomNavBar
+/// Must be wrapped with Default Tab controller or provide a tab controller
+///
 class JumpingTabBar extends StatefulWidget {
   final void Function(int index) onChangeTab;
   final int selectedIndex;
@@ -20,8 +23,8 @@ class JumpingTabBar extends StatefulWidget {
       begin: Alignment.bottomLeft,
       end: Alignment.topRight,
     ),
-    this.selectedIndex,
-    this.items,
+    this.selectedIndex = 0,
+    @required this.items,
     this.controller,
     this.onChangeTab,
   }) : super(key: key);

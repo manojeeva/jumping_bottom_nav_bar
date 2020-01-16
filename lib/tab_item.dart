@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:jumping_nav_bar/tab_item_icon.dart';
+import 'package:jumping_bottom_nav_bar/tab_item_icon.dart';
 
 class TabItem extends StatefulWidget {
   final TabItemIcon tabItemIcon;

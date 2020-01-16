@@ -1,10 +1,10 @@
-name: jumping_nav_bar
-description: Jumping Navigation Bar for Flutter.
-version: 0.0.2
+name: jumping_bottom_nav_bar
+description: Jumping Bottom Navigation Bar for Flutter.
+version: 0.0.1
 homepage: https://github.com/manojeeva/jumping_bottom_nav_bar.git
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
