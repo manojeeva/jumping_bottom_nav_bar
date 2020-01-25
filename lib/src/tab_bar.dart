@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:jumping_bottom_nav_bar/curve_painter.dart';
-import 'package:jumping_bottom_nav_bar/tab_item.dart';
-import 'package:jumping_bottom_nav_bar/tab_item_icon.dart';
+import './curve_painter.dart';
+import './tab_item.dart';
+import './tab_item_icon.dart';
 
 /// Main Widget should be used in bottomNavBar
 /// Must be wrapped with Default Tab controller or provide a tab controller
@@ -11,10 +11,12 @@ class JumpingTabBar extends StatefulWidget {
   final int selectedIndex;
   final TabController controller;
   final List<TabItemIcon> items;
+  final Duration duration;
 
   final Gradient circleGradient;
   JumpingTabBar({
     Key key,
+    this.duration = const Duration(milliseconds: 700),
     this.circleGradient = const LinearGradient(
       colors: [
         Color(0xff630141),
@@ -49,7 +51,6 @@ class _JumpingTabBarState extends State<JumpingTabBar>
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-
     itemWidth = MediaQuery.of(context).size.width / widget.items.length;
     final _newController = DefaultTabController.of(context);
     if (_newController != tabController) {
@@ -76,6 +77,9 @@ class _JumpingTabBarState extends State<JumpingTabBar>
   @override
   void didUpdateWidget(JumpingTabBar oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.duration != widget.duration) {
+      animationController.duration = widget.duration;
+    }
     if (widget.selectedIndex != selectedIndex) {
       onChangeTab(widget.selectedIndex, shouldCallParent: false);
     }
@@ -86,7 +90,7 @@ class _JumpingTabBarState extends State<JumpingTabBar>
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 700),
+      duration: widget.duration,
     );
 
     posAnim = Tween<double>(begin: 0, end: 1).animate(CurvedAnimation(
@@ -187,6 +191,7 @@ class _JumpingTabBarState extends State<JumpingTabBar>
     var currentIndex = index + 1;
     var isSelected = currentIndex == selectedIndex;
     return TabItem(
+      duration: widget.duration,
       tabItemIcon: widget.items[index],
       isSelected: isSelected,
       index: currentIndex,

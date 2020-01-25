@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:jumping_bottom_nav_bar/tab_item_icon.dart';
+import './tab_item_icon.dart';
 
 class TabItem extends StatefulWidget {
   final TabItemIcon tabItemIcon;
   final bool isSelected;
   final int index;
+  final Duration duration;
   final void Function(int index) onTabChange;
   TabItem({
+    @required this.duration,
     @required this.tabItemIcon,
     @required this.onTabChange,
     @required this.index,
@@ -20,6 +22,7 @@ class TabItemState extends State<TabItem> with SingleTickerProviderStateMixin {
   Animation<Color> colorAnim;
   Animation<Offset> transAnim;
   AnimationController animationController;
+  final Duration subDuration = const Duration(milliseconds: 200);
 
   @override
   void didUpdateWidget(TabItem oldWidget) {
@@ -28,6 +31,9 @@ class TabItemState extends State<TabItem> with SingleTickerProviderStateMixin {
         animationController.forward();
       else
         animationController.reverse();
+    }
+    if (widget.duration != oldWidget.duration) {
+      animationController.duration = widget.duration;
     }
     super.didUpdateWidget(oldWidget);
   }
@@ -43,7 +49,7 @@ class TabItemState extends State<TabItem> with SingleTickerProviderStateMixin {
     super.initState();
     animationController = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 500),
+      duration: widget.duration - subDuration,
     );
 
     transAnim = Tween(

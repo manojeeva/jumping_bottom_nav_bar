@@ -53,6 +53,7 @@ class _BottomBarPageState extends State<BottomBarPage> {
         ),
         bottomNavigationBar: JumpingTabBar(
           onChangeTab: onChangeTab,
+          // duration: Duration(seconds: 3),
           circleGradient: LinearGradient(
             colors: [
               Colors.purpleAccent,
