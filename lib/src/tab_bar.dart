@@ -25,7 +25,7 @@ class JumpingTabBar extends StatefulWidget {
       begin: Alignment.bottomLeft,
       end: Alignment.topRight,
     ),
-    this.selectedIndex = 0,
+    this.selectedIndex = 1,
     @required this.items,
     this.controller,
     this.onChangeTab,
@@ -38,7 +38,7 @@ class JumpingTabBar extends StatefulWidget {
 class _JumpingTabBarState extends State<JumpingTabBar>
     with SingleTickerProviderStateMixin {
   AnimationController animationController;
-  int selectedIndex = 0;
+  int selectedIndex = 1;
   double itemWidth;
   Animation<double> posAnim;
   Animation<double> paintAnim;
