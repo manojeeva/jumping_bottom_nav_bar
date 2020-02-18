@@ -1,7 +1,6 @@
 # jumping_bottom_nav_bar
 
-Jumping Bottom Tab Bar.
-
+Jumping Bottom Tab Bar. Check out the pub pakage [here](https://pub.dev/packages/jumping_bottom_nav_bar).
 ## Getting Started
 
 Very easily usable and customizable library. 
@@ -16,7 +15,7 @@ Wrap your code with Default Tab Controller to animate when you change tab.
 
 goto pubspec.yaml file add
 ```
-  jumping_bottom_nav_bar : 0.0.1
+  jumping_bottom_nav_bar : 0.0.4
 ```
 
 import inside your project.
