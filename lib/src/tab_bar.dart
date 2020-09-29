@@ -10,17 +10,20 @@ class JumpingTabBar extends StatefulWidget {
   final void Function(int index) onChangeTab;
   final int selectedIndex;
   final TabController controller;
-  final List<TabItemIcon> items;
   final Duration duration;
+  final Color backgroundColor;
+
+  final List<TabItemIcon> items;
 
   final Gradient circleGradient;
   JumpingTabBar({
     Key key,
+    this.backgroundColor,
     this.duration = const Duration(milliseconds: 700),
     this.circleGradient = const LinearGradient(
       colors: [
-        Color(0xff630141),
-        Color(0xffB83F7D),
+        const Color(0xff630141),
+        const Color(0xffB83F7D),
       ],
       begin: Alignment.bottomLeft,
       end: Alignment.topRight,
@@ -146,6 +149,10 @@ class _JumpingTabBarState extends State<JumpingTabBar>
     return Stack(
       overflow: Overflow.visible,
       children: [
+        Container(
+          height: 75,
+          color: widget.backgroundColor,
+        ),
         SizedBox(
           height: 75,
           child: AnimatedBuilder(
@@ -179,10 +186,14 @@ class _JumpingTabBarState extends State<JumpingTabBar>
         ),
         SizedBox(
           height: 75,
-          child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            for (var i = 0; i < widget.items.length; i++) getTabItem(i),
-          ]),
-        )
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: List.generate(
+              widget.items.length,
+              (index) => getTabItem(index),
+            ),
+          ),
+        ),
       ],
     );
   }

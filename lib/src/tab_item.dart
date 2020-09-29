@@ -6,10 +6,11 @@ class TabItem extends StatefulWidget {
   final bool isSelected;
   final int index;
   final Duration duration;
+
   final void Function(int index) onTabChange;
   TabItem({
     @required this.duration,
-    @required this.tabItemIcon,
+    this.tabItemIcon,
     @required this.onTabChange,
     @required this.index,
     @required this.isSelected,
@@ -54,7 +55,7 @@ class TabItemState extends State<TabItem> with SingleTickerProviderStateMixin {
 
     transAnim = Tween(
       begin: Offset(0, 0),
-      end: Offset(0, -25),
+      end: Offset(0, -28),
     ).animate(animationController);
     colorAnim = ColorTween(
       begin: widget.tabItemIcon.startColor ?? Colors.black,
@@ -74,9 +75,13 @@ class TabItemState extends State<TabItem> with SingleTickerProviderStateMixin {
             alignment: Alignment.center,
             child: Transform.translate(
               offset: transAnim.value,
-              // decoration: BoxDecoration(color: Colors.white, border: Border.all()),
-              child: Icon(widget.tabItemIcon.iconData,
-                  size: 30, color: colorAnim.value),
+              child: widget.tabItemIcon.buildWidget != null
+                  ? widget.tabItemIcon.buildWidget(context, colorAnim)
+                  : Icon(
+                      widget.tabItemIcon.iconData,
+                      size: 30,
+                      color: colorAnim.value,
+                    ),
             ),
           ),
         ),

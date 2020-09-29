@@ -6,11 +6,14 @@ class TabItemIcon {
   final Color endColor;
   final IconData iconData;
   final Color curveColor;
+  final Widget Function(BuildContext context, Animation<Color> color)
+      buildWidget;
 
   TabItemIcon({
     this.curveColor = const Color(0xff2A0835),
     this.startColor = Colors.black,
     this.endColor = Colors.white,
-    @required this.iconData,
+    this.iconData,
+    this.buildWidget,
   });
 }

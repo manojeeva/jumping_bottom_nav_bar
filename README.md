@@ -15,7 +15,7 @@ Wrap your code with Default Tab Controller to animate when you change tab.
 
 goto pubspec.yaml file add
 ```
-  jumping_bottom_nav_bar : 0.0.4
+  jumping_bottom_nav_bar : 0.0.5
 ```
 
 import inside your project.
@@ -49,6 +49,55 @@ Changing Icon and Curve colors
         curveColor: Colors.yellow,
     )
 ```
+Custom Tab Widget buildWidget color is animationColor.
+```
+ TabItemIcon(
+      buildWidget: (_, color) => Container(
+        color: color.value,
+        child: Text("1"),
+      ),
+      startColor: Colors.red,
+      endColor: Colors.green,
+      curveColor: Colors.yellow,
+    ),
+```
+
+Show Notification Count or Icon
+```
+  TabItemIcon(
+    buildWidget: (_, color) => Stack(
+      children: <Widget>[
+        new Icon(
+          Icons.notifications,
+          size: 30,
+        ),
+        new Positioned(
+          top: 1.0,
+          right: 0.0,
+          child: new Stack(
+            children: <Widget>[
+              new Icon(
+                Icons.brightness_1,
+                size: 18.0,
+                color: Colors.green[800],
+              ),
+              new Positioned(
+                top: 1.0,
+                right: 4.0,
+                child: new Text("2",
+                    style: new TextStyle(
+                      color: Colors.white,
+                      fontSize: 15.0,
+                      fontWeight: FontWeight.w500,
+                    )),
+              )
+            ],
+          ),
+        )
+      ],
+    ),
+  ),
+```
 Changing Circle Color
 ```
 LinearGradient(
@@ -63,7 +112,7 @@ LinearGradient(
 
  ## Full Example.
 ```
-class BottomBarPage extends StatefulWidget {
+cclass BottomBarPage extends StatefulWidget {
   @override
   _BottomBarPageState createState() => _BottomBarPageState();
 }
@@ -71,17 +120,6 @@ class BottomBarPage extends StatefulWidget {
 class _BottomBarPageState extends State<BottomBarPage> {
   int selectedIndex = 2;
 
-  final iconList = [
-    TabItemIcon(
-        iconData: Icons.home,
-        startColor: Colors.red,
-        endColor: Colors.green,
-        curveColor: Colors.yellow),
-    TabItemIcon(iconData: Icons.healing, curveColor: Colors.orange),
-    TabItemIcon(iconData: Icons.location_on, curveColor: Colors.green),
-    TabItemIcon(iconData: Icons.notifications),
-    TabItemIcon(iconData: Icons.supervised_user_circle),
-  ];
   void onChangeTab(int index) {
     selectedIndex = index;
   }
@@ -89,7 +127,7 @@ class _BottomBarPageState extends State<BottomBarPage> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: iconList.length,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           title: Text("Bottom Bar Page"),
@@ -115,6 +153,7 @@ class _BottomBarPageState extends State<BottomBarPage> {
         ),
         bottomNavigationBar: JumpingTabBar(
           onChangeTab: onChangeTab,
+          backgroundColor: Colors.blue,
           circleGradient: LinearGradient(
             colors: [
               Colors.purpleAccent,
@@ -123,12 +162,59 @@ class _BottomBarPageState extends State<BottomBarPage> {
             begin: Alignment.bottomLeft,
             end: Alignment.topRight,
           ),
-          items: iconList,
+          items: [
+            TabItemIcon(
+              buildWidget: (_, color) => Container(
+                color: color.value,
+                child: Text("1"),
+              ),
+              startColor: Colors.red,
+              endColor: Colors.green,
+              curveColor: Colors.yellow,
+            ),
+            TabItemIcon(iconData: Icons.healing, curveColor: Colors.orange),
+            TabItemIcon(iconData: Icons.location_on, curveColor: Colors.green),
+            TabItemIcon(
+              buildWidget: (_, color) => Stack(
+                children: <Widget>[
+                  new Icon(
+                    Icons.notifications,
+                    size: 30,
+                  ),
+                  new Positioned(
+                    top: 1.0,
+                    right: 0.0,
+                    child: new Stack(
+                      children: <Widget>[
+                        new Icon(
+                          Icons.brightness_1,
+                          size: 18.0,
+                          color: Colors.green[800],
+                        ),
+                        new Positioned(
+                          top: 1.0,
+                          right: 4.0,
+                          child: new Text("2",
+                              style: new TextStyle(
+                                color: Colors.white,
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w500,
+                              )),
+                        )
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            ),
+            TabItemIcon(iconData: Icons.supervised_user_circle),
+          ],
           selectedIndex: selectedIndex,
         ),
       ),
     );
   }
 }
+
 
 ```
