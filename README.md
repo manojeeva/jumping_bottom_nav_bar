@@ -15,7 +15,7 @@ Wrap your code with Default Tab Controller to animate when you change tab.
 
 goto pubspec.yaml file add
 ```
-  jumping_bottom_nav_bar : 0.0.5
+  jumping_bottom_nav_bar : 0.1.0
 ```
 
 import inside your project.
