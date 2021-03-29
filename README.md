@@ -15,12 +15,12 @@ Wrap your code with Default Tab Controller to animate when you change tab.
 
 goto pubspec.yaml file add
 ```
-  jumping_bottom_nav_bar : 0.1.0
+  jumping_bottom_nav_bar : ^0.1.0
 ```
 
 import inside your project.
 ```
-import 'package:jumping_bottom_nav_bar/jumping_nav_bar.dart';
+import 'package:jumping_bottom_nav_bar/jumping_bottom_nav_bar.dart';
 ```
 
 Bottom Navigation include in the scafold.
